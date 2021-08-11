@@ -11,15 +11,29 @@
 #' @return inverse error function
 #' @export
 erfinv <- function(z) {
+      x <- ((pi^(0.5))/2) * z
       su <- 0
-      top <- 0
-      bottom <- 0
-      for (i in 1:11) {
-            k <- i - 1
-            top <- z^(2*k+1)
-            bottom <- factorial(k) * (2*k+1)
-            su <- su + (top / bottom)
+      c <- array(NA, dim = 10)
+      c[1] <- 1
+      for (i in 2:10) {
+            current <- 0
+            k <- i-1
+            for (j in 1:k) {
+                  m <- j-1
+                  top <- c[m] * c[k-1-m]
+                  bottom <- (m+1)*(2*m+1)
+                  current <- current + (top/bottom)
+            }
+            c[i] <- current
       }
-      erfinv <- (2 / (pi^(0.5))) * su
+      den <- 0
+      right <- 0
+      for (i in 1:10) {
+            k <- i - 1
+            right <- x^(2*k+1)
+            den <- 2 * k + 1
+            su <- su + (right * c[i] / den)
+      }
+      erfinv <- su
       return(erfinv)
 }
