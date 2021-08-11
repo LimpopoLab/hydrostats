@@ -13,7 +13,7 @@ erf <- function(t) {
       bottom <- 0
       for (i in 1:21) {
             k <- i - 1
-            top <- ((-1)^k) * z^(2*k+1)
+            top <- ((-1)^k) * t^(2*k+1)
             bottom <- factorial(k) * (2*k+1)
             su <- su + (top / bottom)
       }
