@@ -17,6 +17,6 @@ erf <- function(t) {
             bottom <- factorial(k) * (2*k+1)
             su <- su + (top / bottom)
       }
-      erfinv <- (2 / (pi^(0.5))) * su
-      return(erfinv)
+      erf <- (2 / (pi^(0.5))) * su
+      return(erf)
 }
