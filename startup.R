@@ -14,21 +14,23 @@ devtools::document()
 x <- ((c(1:41))/10)-2.1
 Erf <- erf(x)
 Erfc <- 1-erf(x)
+inverse <- erfinv(Erf)
 err <- data.frame(x,Erf,Erfc)
-pivot_longer(err, cols = c(Erf, Erfc), 
-             names_to = "Variable", 
+err <- pivot_longer(err, cols = c(Erf, Erfc), 
+             names_to = "Function", 
              values_to = "Value")
 
-ggplot(err) +
-      geom_line(aes(x = x, y = y)) +
-      geom_line(aes(x = x, y = z)) +
+ggplot(err, aes(x = x, y = Value)) +
+      geom_line(aes(linetype = Function)) +
       labs(x = "x", y = "y") +
-      
+      xlim(c(-2,2)) + ylim(c(-2,2)) +
+      scale_linetype_manual(values=c("solid", "dashed")) +
+      theme(legend.position="right") +
       theme(panel.background = element_rect(fill = "white", colour = "black")) +
       theme(aspect.ratio = 1) +
       theme(axis.text = element_text(face = "plain", size = 12))
 
-# Formula from Wikipedia:
+# Inverse formula from Wikipedia:
 # ((pi^0.5)/2) * (z + pi*(z^3)/12 + 7*(pi^2)*(z^5)/480 + 127*(pi^3)*(z^7)/40320 + 4369*(pi^4)*(z^9)/5806080 + 34807*(pi^5)*(z^11)/182476800)
 # but that doesn't work either.
 
