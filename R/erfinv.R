@@ -11,12 +11,12 @@
 #' @return inverse error function
 #' @export
 erfinv <- function(z) {
-      x <- ((pi^(0.5))/2) * z
+      x <- z * (pi^(0.5)) / 2
       c <- array(NA, dim = 10)
       c[1] <- 1
       for (i in 2:10) {
             current <- 0
-            k <- i-1
+            k <- i - 1
             for (j in 1:k) {
                   m <- j-1
                   top <- c[m+1] * c[k-m]
@@ -32,6 +32,6 @@ erfinv <- function(z) {
             den <- 2 * k + 1
             su <- su + (right * c[i] / den)
       }
-      erfinv <- su
+      erfinv <- su * 2 / (pi^0.5)
       return(erfinv)
 }
