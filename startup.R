@@ -3,6 +3,7 @@ library(devtools)
 install_github("LimpopoLab/hydrostats", force = TRUE)
 library(hydrostats)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(latex2exp)
 
@@ -13,7 +14,10 @@ devtools::document()
 x <- ((c(1:41))/10)-2.1
 Erf <- erf(x)
 Erfc <- 1-erf(x)
-err <- data.frame(x,"Erf",y)
+err <- data.frame(x,Erf,Erfc)
+pivot_longer(err, cols = c(Erf, Erfc), 
+             names_to = "Variable", 
+             values_to = "Value")
 
 ggplot(err) +
       geom_line(aes(x = x, y = y)) +
