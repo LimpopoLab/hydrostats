@@ -26,7 +26,7 @@ erfinv <- function(z) {
             c[i] <- current
       }
       su <- 0
-      for (i in 1:10) {
+      for (i in 1:100) {
             k <- i - 1
             right <- x^(2*k+1)
             den <- 2 * k + 1
