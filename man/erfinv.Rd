@@ -15,8 +15,9 @@ inverse error function
 \description{
 This function returns the inverse error function.  The
 inverse complementary error function can be obtained
-with the arguement of (1-z).  This uses a truncated
-infinite series.  If more precision is needed, re-write
-the series in the for loop to include more higher-order
-terms.
+with the arguement of (1-z).  The method is from
+Strecok, A. (1968). On the calculation of the inverse
+of the error function. Mathematics of Computation<,
+22(101), 144–158. https://doi.org/10.1090/S0025-5718-1968-0223070-2
+equation 8 with table 2.
 }
