@@ -48,4 +48,6 @@ erfinv <- function(z) {
       for (n in 1:32) {
             su <- su + c[n] * z^((2*n)-1)
       }
+      erfinv <- su
+      return(erfinv)
 }
