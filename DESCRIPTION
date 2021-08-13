@@ -1,13 +1,13 @@
 Package: hydrostats
 Title: Statistics for Hydrology
-Version: 0.0.0.9000
+Version: 0.1.0.0000
 Authors@R: 
     person(given = "David",
            family = "Kahler",
            role = c("aut", "cre"),
            email = "kahlerd@duq.edu",
            comment = c(ORCID = "0000-0002-8941-6402"))
-Description: Provides some useful statistics functions.
+Description: Provides some useful statistics functions for hydrologic analysis
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
