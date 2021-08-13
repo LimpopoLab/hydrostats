@@ -16,10 +16,11 @@ Erf <- erf(x)
 Erfc <- 1-erf(x)
 inverse <- erfinv(Erf)
 
-inv <- data.frame(x,inverse)
+inv <- data.frame(x,Erf,inverse)
 
 ggplot(inv) +
       geom_line(aes(x = x, y = x)) +
+      geom_line(aes(x = x, y = Erf)) +
       geom_point(aes(x = x, y = inverse)) +
       labs(x = "x", y = TeX("Erf^{-1}(Erf(x))")) +
       xlim(c(-2,2)) + ylim(c(-2,2)) +
@@ -140,3 +141,5 @@ ggplot(err, aes(x = x, y = Value)) +
 # plot(x,log(c))
 # plot(x,a)
 # plot(x,log(a))
+# Good, but doesn't work after 0.9 or so
+
