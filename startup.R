@@ -15,6 +15,9 @@ x <- ((c(1:41))/10)-2.1
 Erf <- erf(x)
 Erfc <- 1-erf(x)
 inverse <- erfinv(Erf)
+plot(x,inverse)
+lines(c(-2,2),c(-2,2))
+
 err <- data.frame(x,Erf,Erfc)
 err <- pivot_longer(err, cols = c(Erf, Erfc), 
              names_to = "Function", 
@@ -112,3 +115,15 @@ ggplot(err, aes(x = x, y = Value)) +
 #       su <- su + c[n] * x^((2*n)-1)
 # }
 # THIS WORKED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# Now to investigate how many c_n values are needed for the pt3 inverse.
+# x <- c(1:60)
+# z <- 0.999
+# a <- array(NA, dim = length(x))
+# for (n in 1:length(x)) {
+#       a[n] <- c[n] * z^((2*n)-1)
+# }
+# plot(x,c)
+# plot(x,log(c))
+# plot(x,a)
+# plot(x,log(a))
