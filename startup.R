@@ -15,6 +15,19 @@ x <- ((c(1:41))/10)-2.1
 Erf <- erf(x)
 Erfc <- 1-erf(x)
 inverse <- erfinv(Erf)
+
+inv <- data.frame(x,inverse)
+
+ggplot(inv) +
+      geom_line(aes(x = x, y = x)) +
+      geom_point(aes(x = x, y = inverse)) +
+      labs(x = "x", y = TeX("Erf^{-1}(Erf(x))")) +
+      xlim(c(-2,2)) + ylim(c(-2,2)) +
+      theme(panel.background = element_rect(fill = "white", colour = "black")) +
+      theme(aspect.ratio = 1) +
+      theme(axis.text = element_text(face = "plain", size = 12))
+
+
 plot(x,inverse)
 lines(c(-2,2),c(-2,2))
 
