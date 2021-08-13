@@ -116,6 +116,7 @@ erfinv <- function(z) {
       for (n in 1:100) {
             su <- su + c[n] * z^((2*n)-1)
       }
+      # test <- abs(erf(su) - z)
       erfinv <- su
       return(erfinv)
 }
