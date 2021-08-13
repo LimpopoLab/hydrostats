@@ -4,20 +4,22 @@
 \alias{pt3}
 \title{Pearson type III distribution}
 \usage{
-pt3(m, s, c)
+pt3(c, Fx)
 }
 \arguments{
-\item{m}{mean of sample}
-
-\item{s}{standard deviation of sample}
-
 \item{c}{skewness of sample}
+
+\item{Fx}{non-exceedence probability, F(x)=}
 }
 \value{
-the CDF or K value
+the inverse CDF or K value
 }
 \description{
-This function returns the cumulative distribution function value for
-the Pearson type III distribution, that is, the K value.  It is
-calculated with the gamma function based on the skewness as an input.
+This function returns the inverse CDF of the Pearson
+type III distribution, that is, the K value.  It is
+calculated based on the approximation of:
+Kite (1977), Frequency and Risk Analysis in Hydrology,
+Water Resouces Publications, Fourt Collins.
+as cited in:
+Chow, Maidment, and Mays (1988), Applied Hydrology, ch. 12
 }
