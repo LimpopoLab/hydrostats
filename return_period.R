@@ -4,7 +4,7 @@ library(readr)
 library(lubridate)
 library(e1071)
 library(devtools)
-install_github("LimpopoLab/hydrostats")
+install_github("LimpopoLab/hydrostats", force = TRUE)
 library(hydrostats)
 
 ## EXAMPLE 1
@@ -21,6 +21,7 @@ hist(z$log_q) # this is much closer to a normal distribution
 m <- mean(z$log_q)
 s <- sd(z$log_q)
 c <- skewness(z$log_q)
+c1 <- skew(z$log_q) # uses built-in skewness calculation.  there is a difference between methods.
 
 # Note, the reason the distribution is so important is because 
 # the probabilities and return period are taken from the 
