@@ -1,8 +1,10 @@
-#' Skewness or third moment about the mean
+#' Skewness
 #' 
 #' This function returns the skewness of the data.  This 
 #' function is writen to remove NAs and use the bias-
-#' corrected statistics.
+#' corrected statistics.  The third moment about the mean 
+#' is computed and divided by the cube of the standard 
+#' deviation.  
 #' 
 #' @param x data
 #' @return skewness

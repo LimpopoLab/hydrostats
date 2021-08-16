@@ -2,7 +2,7 @@
 % Please edit documentation in R/skew.R
 \name{skew}
 \alias{skew}
-\title{Skewness or third moment about the mean}
+\title{Skewness}
 \usage{
 skew(x)
 }
@@ -15,5 +15,7 @@ skewness
 \description{
 This function returns the skewness of the data.  This
 function is writen to remove NAs and use the bias-
-corrected statistics.
+corrected statistics.  The third moment about the mean
+is computed and divided by the cube of the standard
+deviation.
 }
