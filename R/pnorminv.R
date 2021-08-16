@@ -11,7 +11,7 @@
 #' @return value of nonexceedence for that probability
 #' @export
 pnorminv <- function(p,m=0,s=1) {
-      if ((p<0.999)&(p>0)) {
+      if ((p<=0.999)&(p>0)) {
             y <- -(2^(0.5)) * erfinv(1 - (2 * p))
             pnorminv <- (y * s) + m
             return(pnorminv)
