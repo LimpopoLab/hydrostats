@@ -7,7 +7,14 @@ library(devtools)
 install_github("LimpopoLab/hydrostats", force = TRUE)
 library(hydrostats)
 
-## EXAMPLE 1
+## ANNUAL MAXIMUM PRECIPITATION EXAMPLE
+# This is an example from Chow, Maidment, and Mays, 1988, Applied Hydrology
+x <- read_csv("ChowMaidmentMays_Ex12_2_1.csv")
+T_R <- 50 # return period in years (in this case)
+Fx <- 1 - (1/T_R)
+y <- evi(x,Fx)
+
+## ANNUAL FLOOD EXAMPLE 1
 # This is an example from Chow, Maidment, and Mays, 1988, Applied Hydrology
 z <- read_csv("ChowMaidmentMays_Ex12_3_3.csv")
 z <- rename(z, q = AnnualMaxDischarge_cfs) # remember, units are cfs
