@@ -19,5 +19,6 @@ value of nonexceedence for that probability
 \description{
 This function returns the inverse cumulative distribution function
 value for the normal distribution.  It is calculated based on the
-inverse complemenary error function.
+inverse complemenary error function.  The maximum CDF value that
+can be inverted is x = 0.999.
 }

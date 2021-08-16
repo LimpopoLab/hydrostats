@@ -2,7 +2,8 @@
 #' 
 #' This function returns the inverse cumulative distribution function 
 #' value for the normal distribution.  It is calculated based on the 
-#' inverse complemenary error function.
+#' inverse complemenary error function.  The maximum CDF value that 
+#' can be inverted is x = 0.999.
 #' 
 #' @param p probability of nonexceedence < 1
 #' @param m mean of sample
@@ -10,7 +11,7 @@
 #' @return value of nonexceedence for that probability
 #' @export
 pnorminv <- function(p,m=0,s=1) {
-      if ((p<1)&(p>0)) {
+      if ((p<0.999)&(p>0)) {
             y <- -(2^(0.5)) * erfinv(1 - (2 * p))
             pnorminv <- (y * s) + m
             return(pnorminv)
