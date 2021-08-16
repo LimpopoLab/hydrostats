@@ -2,6 +2,7 @@
 
 export(erf)
 export(erfinv)
+export(evi)
 export(pnorminv)
 export(pt3)
 export(skew)
