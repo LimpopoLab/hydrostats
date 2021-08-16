@@ -4,7 +4,7 @@
 \alias{evi}
 \title{Extreme Value type I}
 \usage{
-evi(x)
+evi(x, Fx)
 }
 \arguments{
 \item{x}{data}

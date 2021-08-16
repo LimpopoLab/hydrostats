@@ -9,7 +9,7 @@
 #' @param Fx Fx non-exceedence probability, F(x)=
 #' @return inverse EVI CDF
 #' @export
-evi <- function(x) {
+evi <- function(x,Fx) {
       s <- stdev(x)
       a <- (6^0.5) * s / pi
       m <- (mean(x, na.rm = TRUE)) - (0.5772 * a)
