@@ -12,7 +12,7 @@ library(hydrostats)
 x <- read_csv("ChowMaidmentMays_Ex12_2_1.csv")
 T_R <- 50 # return period in years (in this case)
 Fx <- 1 - (1/T_R)
-y <- evi(x,Fx)
+y <- evi(x$max_precip_in,Fx)
 
 ## ANNUAL FLOOD EXAMPLE 1
 # This is an example from Chow, Maidment, and Mays, 1988, Applied Hydrology
