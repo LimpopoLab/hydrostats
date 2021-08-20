@@ -14,7 +14,7 @@
 #' @export
 pt3 <- function(c,Fx) {
       k <- c/6
-      z <- pnorminv(Fx)
+      z <- qnorm(Fx)
       K_T <- z + ((z^2) - 1) * k + ((z^3) -(6*z)) * (k^2) / 3 - ((z^2) - 1) * (k^3) + z * (k^4) + (k^5)/3
       pt3 <- K_T
       return(pt3)
