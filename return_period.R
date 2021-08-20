@@ -20,8 +20,8 @@ z <- read_csv("ChowMaidmentMays_Ex12_3_3.csv")
 z <- rename(z, q = AnnualMaxDischarge_cfs) # remember, units are cfs
 
 # Compare data and log-transformed data
-hist(z$q)
-z$log_q <- log(z$q, 10) # this is log base 10
+hist(z$AnnualMaxDischarge_cfs)
+z$log_q <- log(z$AnnualMaxDischarge_cfs, 10) # this is log base 10
 hist(z$log_q) # this is much closer to a normal distribution
 
 ## LOGNORMAL ANALYSIS
@@ -41,7 +41,7 @@ Fx <- 1 - (1/T_R)
 # produces a cummulative probability, or probability of 
 # non-exceedence, of Fx.
 
-x <- pnorminv(Fx)
+x <- qnorm(Fx)
 
 y <- (x * s) + m
 z <- 10^y # this is the T_R flood level
