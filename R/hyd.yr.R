@@ -11,7 +11,7 @@
 #' @param h "N"orthern or "S"outhern/tropical region
 #' @return hydrologic year
 #' @export
-hyd.yr <- function(d, h="N") {
+hyd.yr <- function(dt, h="N") {
       if ((h != "N") & (h != "S")) {
             print("Enter a valid location: N or S")
       } else {
