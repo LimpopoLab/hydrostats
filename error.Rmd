@@ -1,5 +1,5 @@
 ---
-title: "Limpopo Resilience Lab *hydrostats* Package"
+title: "*hydrostats* Package"
 author: "David Kahler"
 output: html_document
 header-includes: 
@@ -8,27 +8,122 @@ header-includes:
       \usepackage{pdfpages}
       \usepackage{pdflatex}
 ---
+The *hydrostats* package includes some additional commands to assist in the analysis of hydrology time-series data.  The commands are available for use by anyone.  Please use caution with some of the functions, they are limited in their range.  Specifically, the inverse error function and dependent functions (all others) have a limit of F(x) = 0.999.
 
-## Statistics
-### Mean
+Limpopo Resilience Lab: This work is a collaboration between Duquesne University, University of Venda, and Rensselaer Polytechnic Institute. It was supported by the United States Agency for International Development, Southern Africa Regional Mission, Fixed Amount Award 72067419FA00001. This work reflects the work of the authors and does not necessarily reflect the views of USAID or the United States Government. For more information about the project, please visit [www.duq.edu/limpopo](https://www.duq.edu/limpopo).  
 
+## Installation  
+These data tools can be pulled directly from GitHub.  The code depends on several Tidyverse libraries and RCurl.  The package installation should prompt these additional libraries.  You will also need the devtools library to load from GitHub.  For example:  
+> install.packages("devtools")  
+> library(devtools)  
+> install.github("LimpopoLab/hydrostats")  
+> library(hydrostats)  
+
+## Statistics  
+*verson 1.0.0*  
+### Arithmatic Mean
+The mean, $\mu$, is estimated based on the sample:
+\begin{equation}
+\mu \approx m = \frac{1}{n} \sum_{i=1}^{n} x_i
+\end{equation}  
+
+This function is built-in to R and accessible with the command, mean().  It has a couple of options, specifically, the option to remove the NAs in the data, x.  This option is shown below.  
+> x <- c(1:100)  
+> m <- mean(x)  
+> m  
+> [1] 50.5  
+> x[2] <- NA  
+> mean(x)  
+> [1] NA  
+> mean(x, na.rm = TRUE)  
+> [1] 50.9899  
 
 ### Standard Deviation
+The standard deviation is the square root of the variance, which is the second central moment of the sample.  The bias-corrected standard deviation uses $n-1$ instead of $n$; this is sometimes called the sample standard deviation:  
+\begin{equation}
+\sigma^2 \approx s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i-m)^2
+\end{equation}  
 
+There is a built-in standard deviation function that is available through R, sd().  The built-in function uses the bias-corrected denominator (shown above).  The *hydrostats* functions also use the bias-corrected denominator; however, you can change to a population standard deviation with the denominator of (n) by changing the option as shown in the example.  
+> x <- c(1:100)  
+> s1 <- sd(x, na.rm = TRUE)  
+> s  
+> [1] 29.01149  
+> s2 <- stdev(x)  
+> s2  
+> [1] 29.01149  
+> s3 <- stdev(x, biascorr = FALSE)  
+> s3  
+> [1] 28.86607  
 
 ### Skewness
-https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm
+The skewness is a measure of how centered the distribution is.  A positive skewness indicates that the left (negative on the number line) tail extends dispropotionately further than the right (positive) tail, a negative skewness indicates that the right tail extends disproportionately further than the left tail.  It is found with the third moment about the mean or third central moment.
+\begin{equation}
+\mu_3 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i-m)^3
+\end{equation}  
 
-## Error Function
+\begin{equation}
+c_s = \frac{\mu_3}{s^3}
+\end{equation}  
+
+The *hydrostats* function skew() provides a skewness measurement based on the above definitions.  The package e1071 also has a skewness function, skewness() with more options.  
+
+For more information on skewness, see the [NIST Handbook](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm).  
+
+## Distributions and Functions
+### Error Function and its Inverse
+The error function is defined as:
 \begin{equation}
 \mathrm{erf}(x)=\frac{2}{\sqrt{\pi}} \int_{0}^x e^{-t^2} dt
 \end{equation}
 
+The error function may be found numerically, erf():
 \begin{equation}
 \mathrm{erf}(x)=\frac{2}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-1)^k x^(2k+1)}{k! (2k+1)}
 \end{equation}
 
-## Inverse Error Function
+```{r ERF, echo=FALSE, message=FALSE}
+library(hydrostats)
+library(ggplot2)
+library(latex2exp)
+x <- ((c(1:41))/10)-2.1
+Erf <- erf(x)
+Erfc <- 1-erf(x)
+inverse <- erfinv(Erf)
+
+inv <- data.frame(x,Erf,inverse)
+
+ggplot(inv) +
+      geom_line(aes(x = x, y = x)) +
+      geom_line(aes(x = x, y = Erf)) +
+      geom_point(aes(x = x, y = inverse)) +
+      labs(x = "x", y = TeX("Erf^{-1}(Erf(x))")) +
+      xlim(c(-2,2)) + ylim(c(-2,2)) +
+      theme(panel.background = element_rect(fill = "white", colour = "black")) +
+      theme(aspect.ratio = 1) +
+      theme(axis.text = element_text(face = "plain", size = 12))
+```
+
+The inverse error function may be estimated with erfinv():
 \begin{equation}
 \mathrm{erf}^{-1}(z)=\sum_{k=0}^\infty \frac{c_k}{2k+1} \begin{pmatrix}\frac{\sqrt{\pi}}{2} z\end{pmatrix}^{2k+1}
-\end{equation}
+\end{equation}  
+
+However, this inversion is limited to $F(x) \leq 0.999$.  
+
+### Extreme Value type I
+
+### Extreme Value type III and Weibull Distribution
+
+### Pearson type III and Log
+
+## Typical Distributions  
+The exact distribution used should always reflect the data that are modeled.  Nevertheless, these are some typical distributions that are used in hydrology and environmental analysis:  
+
+|Data|Distribution|Citation*|
+|---|---|---|
+|Storm rainfall|Extreme Value type I|(Chow, 1953)|
+|Annual flood|log-Pearson type III|(U.S. Water Resources Council, 1981)|
+|Drought|Weibull (Extreme Value type III with inverse data)|(Gumbell, 1963)|
+|Air pollution|Gamma or log-Gamma|Zhang et al., 1994)|
+ * most distribution citations are from Chow, Maidment, and Mays, (1988) *Applied Hydrology*.
