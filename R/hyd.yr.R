@@ -7,7 +7,7 @@
 #' determined by the calendar year in which the 
 #' hydrologic year ends.
 #' 
-#' @param d date in year, month, day, POSIX, or lubridate format
+#' @param dt date in year, month, day, POSIX, or lubridate format
 #' @param h "N"orthern or "S"outhern/tropical region
 #' @return hydrologic year
 #' @export

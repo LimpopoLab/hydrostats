@@ -4,10 +4,10 @@
 \alias{hyd.yr}
 \title{Converts to hydrologic year from date}
 \usage{
-hyd.yr(d, h = "N")
+hyd.yr(dt, h = "N")
 }
 \arguments{
-\item{d}{date in year, month, day, POSIX, or lubridate format}
+\item{dt}{date in year, month, day, POSIX, or lubridate format}
 
 \item{h}{"N"orthern or "S"outhern/tropical region}
 }
