@@ -8,6 +8,7 @@ library(devtools)
 install_github("LimpopoLab/hydrostats", force = TRUE)
 library(hydrostats)
 library(ggplot2)
+library(latex2exp)
 
 # Precipitation in mm, data from NOAA: ncdc.noaa.gov
 x <- read_csv("nycprecip.csv")
@@ -47,4 +48,40 @@ ggplot(y, aes(x=ann.max)) +
       xlab("Maximum Annual Daily Precipitation (mm)") +
       ylab("# of Days")
 
-## First, use the lognormal distribution to determine the 
+## First, use the lognormal distribution to determine the 50- and 200-year precipitation levels.
+# for the lognormal distribution, you first must identify the statistics of the log-transformed data:
+
+
+
+ggplot(y, aes(x=ann.max)) +
+      geom_histogram(binwidth = 15, fill = "steelblue") +
+      geom_vline(xintercept = precip[1]) +
+      geom_vline(xintercept = precip[2]) +
+      theme(panel.background = element_rect(fill = "white", colour = "black")) +
+      theme(aspect.ratio = 1) +
+      theme(axis.text = element_text(face = "plain", size = 12)) +
+      xlab("Maximum Annual Daily Precipitation (mm)") +
+      ylab("# of Days")
+
+## Second, use the Extreme Value Distribution type I to determine the 50- and 200-year precipitation levels.
+
+
+
+ggplot(y, aes(x=ann.max)) +
+      geom_histogram(binwidth = 15, fill = "steelblue") +
+      geom_vline(xintercept = precip[1]) +
+      geom_vline(xintercept = precip[2]) +
+      theme(panel.background = element_rect(fill = "white", colour = "black")) +
+      theme(aspect.ratio = 1) +
+      theme(axis.text = element_text(face = "plain", size = 12)) +
+      xlab("Maximum Annual Daily Precipitation (mm)") +
+      ylab("# of Days")
+
+## Third, determine the return period of the precipitation that resulted from hurricane Ida on 01 Sep 2021?
+dt <- ymd("2021-09-01")
+i <- which(x$DATE==dt)
+p <- x$PRCP[i]
+Fx <- pevi(y$ann.max, p)
+
+## Also, what happened on 21 August 2021 - a little more than a week before Ida?
+
