@@ -20,15 +20,15 @@ z <- read_csv("ChowMaidmentMays_Ex12_3_3.csv")
 z <- rename(z, q = AnnualMaxDischarge_cfs) # remember, units are cfs
 
 # Compare data and log-transformed data
-hist(z$AnnualMaxDischarge_cfs)
-z$log_q <- log(z$AnnualMaxDischarge_cfs, 10) # this is log base 10
+hist(z$q)
+z$log_q <- log(z$q, 10) # this is log base 10
 hist(z$log_q) # this is much closer to a normal distribution
 
 ## LOGNORMAL ANALYSIS
 m <- mean(z$log_q)
 s <- sd(z$log_q)
 c <- skewness(z$log_q)
-c1 <- skew(z$log_q) # uses built-in skewness calculation.  there is a difference between methods.
+c <- skew(z$log_q) # uses built-in skewness calculation.  there is a difference between methods.
 
 # Note, the reason the distribution is so important is because 
 # the probabilities and return period are taken from the 
