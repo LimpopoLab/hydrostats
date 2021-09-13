@@ -82,6 +82,7 @@ dt <- ymd("2021-09-01")
 i <- which(x$DATE==dt)
 p <- x$PRCP[i]
 Fx <- pevi(y$ann.max, p)
+Tr <- 1 / (1-Fx)
 
 ## Also, what happened on 21 August 2021 - a little more than a week before Ida?
 
