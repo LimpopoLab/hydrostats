@@ -8,7 +8,7 @@ The purpose of this respository is to statistics tools for hydrologic analysis. 
 These data tools can be pulled directly from GitHub.  The code depends on several Tidyverse libraries and RCurl.  The package installation should prompt these additional libraries.  You will also need the devtools library to load from GitHub.  For example:  
 > install.packages("devtools")  
 > library(devtools)  
-> install.github("LimpopoLab/hydrostats")  
+> install_github("LimpopoLab/hydrostats")  
 > library(hydrostats)  
 
 ### Examples  
