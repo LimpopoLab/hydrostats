@@ -34,7 +34,7 @@ e_star <- function(temp, unit = "C") {
       if (exists("t")) {
             e_star <- array(NA, dim = length(t))
             for (i in 1:length(t)) {
-                  e_star[i] <- (a0 + t *(a1 + t *(a2 + t *(a3 + t *(a4 + t *(a5 + t*a6)))))) * 100
+                  e_star[i] <- (a0 + t[i] *(a1 + t[i] *(a2 + t[i] *(a3 + t[i] *(a4 + t[i] *(a5 + t[i]*a6)))))) * 100
             }
             return(e_star)
       }
