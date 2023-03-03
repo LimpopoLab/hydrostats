@@ -4,10 +4,10 @@
 \alias{hyd.mo}
 \title{Converts to hydrologic month from date}
 \usage{
-hyd.mo(d, h = "N")
+hyd.mo(dt, h = "N")
 }
 \arguments{
-\item{d}{date in year, month, day, POSIX, or lubridate format}
+\item{dt}{date in year, month, day, POSIX, or lubridate format}
 
 \item{h}{"N"orthern or "S"outhern/tropical region}
 }
