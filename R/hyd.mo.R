@@ -5,11 +5,11 @@
 #' Northern hemisphere and 01 Aug in the Southern and 
 #' tropical regions.
 #' 
-#' @param d date in year, month, day, POSIX, or lubridate format
+#' @param dt date in year, month, day, POSIX, or lubridate format
 #' @param h "N"orthern or "S"outhern/tropical region
 #' @return hydrologic year
 #' @export
-hyd.mo <- function(d, h="N") {
+hyd.mo <- function(dt, h="N") {
       if ((h != "N") & (h != "S")) {
             print("Enter a valid location: N or S")
       } else {
