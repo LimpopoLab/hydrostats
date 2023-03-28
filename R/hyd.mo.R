@@ -16,7 +16,7 @@ hyd.mo <- function(dt, h="N") {
             if (h == "N") {
                   startmonth <- 10
             } else if (h == "S") {
-                  startmonth <- 8
+                  startmonth <- 7
             }
             dt <- as.Date(dt, origin = "1970-01-01")
             m <- as.numeric(format(dt, "%m"))

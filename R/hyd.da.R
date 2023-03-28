@@ -20,7 +20,7 @@ hyd.da <- function(d, h="N") {
             if (h == "N") {
                   startmonth <- 10
             } else if (h == "S") {
-                  startmonth <- 8
+                  startmonth <- 7
             }
             if (m >= startmonth) {
                   datum <- as.numeric(as.Date(paste0(y, "-", (startmonth-1), "-30"), origin = "1970-01-01"))
