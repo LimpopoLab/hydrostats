@@ -21,9 +21,9 @@ hyd.yr <- function(dt, s="N") {
       } else if ((s != "N") & (s != "S")) {
             print("Enter a valid location: N or S")
       } else {
-            if (h == "N") {
+            if (s == "N") {
                   startmonth <- 10
-            } else if (h == "S") {
+            } else if (s == "S") {
                   startmonth <- 7
             }
       }
