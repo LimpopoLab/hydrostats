@@ -4,12 +4,12 @@
 \alias{hyd.yr}
 \title{Converts to hydrologic year from date}
 \usage{
-hyd.yr(dt, h = "N")
+hyd.yr(dt, s = "N")
 }
 \arguments{
 \item{dt}{date in year, month, day, POSIX, or lubridate format}
 
-\item{h}{"N"orthern or "S"outhern/tropical region}
+\item{s}{"N"orthern or "S"outhern/tropical region, numerical start month - 01 for January, 12 for December}
 }
 \value{
 hydrologic year
@@ -17,8 +17,9 @@ hydrologic year
 \description{
 Judges and converts to hydrologic calendar from date.
 Note that the hydrologic year starts 01 Oct in the
-Northern hemisphere and 01 Aug in the Southern and
-tropical regions.  Here, the hydrologic year is
-determined by the calendar year in which the
-hydrologic year ends.
+Northern hemisphere and 01 Jul in the Southern and
+tropical regions.  Users can also dtermine the start
+month of their custom hydrologic year.  Here, the
+hydrologic year is determined by the calendar year
+in which the hydrologic year ends.
 }
