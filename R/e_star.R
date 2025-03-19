@@ -4,7 +4,7 @@
 #' pressure of water in the atmosphere using the 
 #' nested form of the Goff-Gratch formulation as 
 #' derived by Lowe (1977).  Input temperature is 
-#' provided in Celcius, but can be adjusted to 
+#' provided in Celsius, but can be adjusted to 
 #' F, K, or R.  The output is in Pascals.
 #' 
 #' @param temp temperature
