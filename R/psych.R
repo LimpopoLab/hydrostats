@@ -7,7 +7,7 @@
 #' 
 #' @param temp temperature
 #' @param unit temperature unit (C)elcius, (K)elvin, (F)ahrenheit, (R)ankine
-#' @return slope of the saturation vapor pressure curve (Pa/K)
+#' @return psychrometric constant (Pa/K)
 #' @export
 psych <- function(temp, unit = "C") {
       if (unit == "C") {
