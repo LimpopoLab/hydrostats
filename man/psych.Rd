@@ -12,7 +12,7 @@ psych(temp, unit = "C")
 \item{unit}{temperature unit (C)elcius, (K)elvin, (F)ahrenheit, (R)ankine}
 }
 \value{
-slope of the saturation vapor pressure curve (Pa/K)
+psychrometric constant (Pa/K)
 }
 \description{
 This function returns the psychrometric
