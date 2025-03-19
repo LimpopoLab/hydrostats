@@ -25,7 +25,7 @@ psych <- function(temp, unit = "C") {
       if (exists("t")) {
             psych <- array(NA, dim = length(t))
             for (i in 1:length(t)) {
-                  psych[i] <- 100 * 4.9289e-7 * t[i]^2 + 3.4717e-4 * t[i] + 0.51443
+                  psych[i] <- 100 * (4.9289e-7 * (t[i]^2) + 3.4717e-4 * t[i] + 0.51443)
             }
             return(psych)
       }
