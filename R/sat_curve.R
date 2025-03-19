@@ -28,7 +28,7 @@ sat_curve <- function(temp, unit = "C") {
             for (i in 1:length(t)) {
                   est <- hydrostats::e_star(t[i], "K") # this returns e*, the saturation vapor pressure from hydrostats::e_star, returns in Pa
                   t_r <- 1 - (373.15/t[i]) # internal reference for t_r, below
-                  sat_curve[i] <- (3.7315 * est / (t[i]^2)) * (13.3185 - (3.952 * t_r) - (1.9335 * (t_r^2)) - (0.5196 * (t_r^3)))
+                  sat_curve[i] <- 100 * (3.7315 * est / (t[i]^2)) * (13.3185 - (3.952 * t_r) - (1.9335 * (t_r^2)) - (0.5196 * (t_r^3)))
             }
             return(sat_curve)
       }
